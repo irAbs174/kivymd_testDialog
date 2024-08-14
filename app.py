@@ -1,20 +1,75 @@
-from kivymd.uix.navigationrail import MDNavigationRailItem
-from kivymd.uix.responsivelayout import MDResponsiveLayout
-from kivymd.uix.button import MDButton, MDButtonText
+from kivymd.uix.appbar import MDActionBottomAppBarButton
 from kivymd.uix.navigationdrawer import (
     MDNavigationDrawerItem, MDNavigationDrawerItemTrailingText
 )
-from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.navigationrail import MDNavigationRailItem
+from kivymd.uix.responsivelayout import MDResponsiveLayout
 from kivy.properties import StringProperty, ColorProperty
+from kivymd.uix.button import MDButton, MDButtonText
+from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.theming import ThemeManager
+from kivymd.uix.card import MDCardSwipe
 from bidi.algorithm import get_display
 from kivymd.uix.screen import MDScreen
 from kivy.core.text import LabelBase
 from arabic_reshaper import reshape
+from kivy.core.window import Window
+from kivymd.uix.card import MDCard
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.metrics import sp
+
+
+Window.titlebar_widget = False
+
+Window.minimum_height = 667
+Window.minimum_width = 375
+
+class UniqueApp(MDApp):
+    title = 'Unique App'
+
+    def build(self):
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "Gold"
+
+        # Register the custom font
+        LabelBase.register(
+            name="nasalization",
+            fn_regular="assets/fonts/nasalization.otf",
+        )
+
+        self.theme_cls.font_styles["nasalization"] = {
+            "large": {
+                "line-height": 1.64,
+                "font-name": "nasalization",
+                "font-size": sp(57),
+            },
+        }
+
+        # Initialize and return the root widget
+        self.screen = ResponsiveView()
+        return Builder.load_file('templates/base.kv')
+
+    def persian(self, txt):
+        reshaped_text = reshape(txt)
+        bidi_text = get_display(reshaped_text)
+        return bidi_text
+
+    def load_screen(self, screen_cls):
+        return screen_cls()
+
+
+class MobileView(MDScreen):
+    pass
+
+
+class TabletView(MDScreen):
+    pass
+
+
+class DesktopView(MDScreen):
+    pass
 
 
 class DrawerLabel(MDBoxLayout):
@@ -42,15 +97,11 @@ class DrawerItem(MDNavigationDrawerItem):
         self._trailing_text_obj.text_color = value
 
 
-class MobileView(MDScreen):
+class MainCard(MDCard):
     pass
 
 
-class TabletView(MDScreen):
-    pass
-
-
-class DesktopView(MDScreen):
+class LoginScreen(MDScreen):
     pass
 
 
@@ -66,33 +117,7 @@ class CommonNavigationRailItem(MDNavigationRailItem):
     text = StringProperty()
     icon = StringProperty()
 
-class UniqueApp(MDApp):
-    title = 'Unique App'
-    screen = None
 
-    def build(self):
-        self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Tomato"
-
-        LabelBase.register(
-            name="nasalization",
-            fn_regular="assets/fonts/nasalization.otf",
-        )
-
-        self.theme_cls.font_styles["nasalization"] = {
-            "large": {
-                "line-height": 1.64,
-                "font-name": "nasalization",
-                "font-size": sp(57),
-            },
-        }
-
-        return Builder.load_file('templates/base.kv')
-
-    def persian(self, txt):
-        reshaped_text = reshape(txt)
-        bidi_text = get_display(reshaped_text)
-        return bidi_text
-
-
-UniqueApp().run()
+# Ensure the app runs as expected
+if __name__ == "__main__":
+    UniqueApp().run()

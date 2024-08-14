@@ -1,186 +1,302 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import MDActionBottomAppBarButton kivymd.uix.appbar.MDActionBottomAppBarButton
+#:import MDFabBottomAppBarButton kivymd.uix.appbar.MDFabBottomAppBarButton
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 
-<DrawerItem>
-    active_indicator_color: "#e7e4c0"
-
-
-<DrawerLabel>
-    adaptive_height: True
-    padding: "18dp", 0, 0, "12dp"
-
-    
-MDScreen:
-    md_bg_color: self.theme_cls.backgroundColor
-
-    MDNavigationLayout:
-
-        MDScreenManager:
-
-            MDScreen:
-
-                MDButton:
-                    pos_hint: {"center_x": .5, "center_y": .5}
-                    on_release: nav_drawer.set_state("toggle")
-
-                    MDButtonText:
-                        text: "Open Drawer"
-
-        MDNavigationDrawer:
-            id: nav_drawer
-            radius: 0, dp(16), dp(16), 0
-
-            MDNavigationDrawerMenu:
-
-                MDNavigationDrawerHeader:
-                    orientation: "vertical"
-                    padding: 0, 0, 0, "12dp"
-                    adaptive_height: True
-
-                    MDLabel:
-                        text: "Header title"
-                        theme_text_color: "Custom"
-                        theme_line_height: "Custom"
-                        line_height: 0
-                        text_color: "#4a4939"
-                        adaptive_height: True
-                        padding_x: "16dp"
-                        font_style: "Display"
-                        role: "small"
-
-                    MDLabel:
-                        text: "Header text"
-                        padding_x: "18dp"
-                        adaptive_height: True
-                        font_style: "Title"
-                        role: "large"
-
-                MDNavigationDrawerDivider:
-
-                DrawerItem:
-                    icon: "gmail"
-                    text: "Inbox"
-                    trailing_text: "+99"
-                    trailing_text_color: "#4a4939"
-
-                DrawerItem:
-                    icon: "send"
-                    text: "Outbox"
-
-                MDNavigationDrawerDivider:
-
-                MDNavigationDrawerLabel:
-                    text: "Labels"
-                    padding_y: "12dp"
-
-                DrawerLabel:
-                    icon: "information-outline"
-                    text: "Label"
-
-                DrawerLabel:
-                    icon: "information-outline"
-                    text: "Label"
-
-
-<MobileView>
 
 
 <TabletView>
+    MainCard:
+        name : "TabletMainCard"
+        padding: "4dp"
+        size: "240dp", "100dp"
+    
+        MDRelativeLayout:
+            MDNavigationDrawer:
+                id: nav_drawer
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerItem:
 
-    MDBoxLayout:
+                        pos_hint: {"top":.8, "bottom": 0.2}
 
-        orientation: "horizontal"
-        size_hint_x: 1
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "account"
 
-        MDBoxLayout:
-            size_hint_x: 0.9 
-            orientation: "vertical"
-        
-        MDBoxLayout:
-            size_hint_x: 0.1 
-            orientation: "vertical"
+                        MDNavigationDrawerItemText:
+                            text: "Inbox"
 
+                        MDNavigationDrawerItemTrailingText:
+                            text: "24"
+
+                    MDNavigationDrawerDivider:
+
+            MDIconButton:
+                icon: "dots-vertical"
+                pos_hint: {"top": 1, "left": 1}
+                on_release:on_release:nav_drawer.set_state("toggle")
+                
             MDNavigationRail:
-                type: "selected"
-                padding: "2dp"
+                pos_hint: {"top": 1, "bottom": 1, "left":0 ,"right": 1}
+                type: "unselected"
 
-                MDNavigationRailMenuButton:
-                    icon: "dots-vertical"
-                    on_release: nav_drawer.set_state("toggle")
+                MDNavigationRailItem:
+
+                    MDNavigationRailFabButton:
+                        icon: "magnify"
+
+                    MDNavigationRailItemIcon:
+                        icon: 'account-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="حساب کاربری")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
 
                 MDNavigationRailItem:
 
                     MDNavigationRailItemIcon:
-                        icon: 'shopping'
+                        icon: 'home-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="خانه")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
                         theme_font_size: "Custom"
-                        font_size: "26dp"
+                        font_size: "9dp"
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailItemIcon:
+                        icon: 'shopping-outline'
+                        font_size: "37dp"  # Set icon size here
 
                     MDNavigationRailItemLabel:
                         text: app.persian(txt="فروشگاه")
                         theme_font_name: "Custom"
                         font_name: "nasalization"
                         theme_font_size: "Custom"
-                        font_size: "20dp"
+                        font_size: "9dp"
+
 
                 MDNavigationRailItem:
 
                     MDNavigationRailItemIcon:
-                        icon: 'fire'
-                        theme_font_size: "Custom"
-                        font_size: "26dp"
-            
+                        icon: 'face-agent'
+                        font_size: "37dp"  # Set icon size here
+
                     MDNavigationRailItemLabel:
-                        text: app.persian(txt="شگفت روزانه")
+                        text: app.persian(txt="پشتیبانی")
                         theme_font_name: "Custom"
                         font_name: "nasalization"
                         theme_font_size: "Custom"
-                        font_size: "20dp"
+                        font_size: "9dp"
+
 
                 MDNavigationRailItem:
 
                     MDNavigationRailItemIcon:
-                        icon: 'heart-outline'
-                        theme_font_size: "Custom"
-                        font_size: "26dp"
-            
+                        icon: 'truck-outline'
+                        font_size: "37dp"  # Set icon size here
+
                     MDNavigationRailItemLabel:
-                        text: app.persian(txt="علاقه مندی ها")
+                        text: app.persian(txt="پیگیری سفارش")
                         theme_font_name: "Custom"
                         font_name: "nasalization"
                         theme_font_size: "Custom"
-                        font_size: "20dp"
+                        font_size: "9dp"
+
 
                 MDNavigationRailItem:
 
                     MDNavigationRailItemIcon:
-                        icon: 'gift-outline'
-                        theme_font_size: "Custom"
-                        font_size: "26dp"
-            
+                        icon: 'information-outline'
+                        font_size: "37dp"  # Set icon size here
+
                     MDNavigationRailItemLabel:
-                        text: app.persian(txt="جوایز")
+                        text: app.persian(txt="درباره ما")
                         theme_font_name: "Custom"
                         font_name: "nasalization"
                         theme_font_size: "Custom"
-                        font_size: "20dp"
-
-                MDNavigationRailItem:
-                    MDNavigationRailItemIcon:
-                        icon: 'cog-outline'
-                        theme_font_size: "Custom"
-                        font_size: "26dp"
-            
-                    MDNavigationRailItemLabel:
-                        text: app.persian(txt=" تنظیمات")
-                        theme_font_name: "Custom"
-                        font_name: "nasalization"
-                        theme_font_size: "Custom"
-                        font_size: "20dp"
-
-                MDNavigationRailFabButton:
-                    icon: "account-outline"
+                        font_size: "9dp"
 
 
 <DesktopView>
+    MainCard:
+        name : "DesktopMainCard"
+        padding: "4dp"
+        size: "240dp", "100dp"
+    
+        MDRelativeLayout:
+            MDNavigationDrawer:
+                id: nav_drawer
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerItem:
+
+                        pos_hint: {"top":.8, "bottom": 0.2}
+
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "account"
+
+                        MDNavigationDrawerItemText:
+                            text: "Inbox"
+
+                        MDNavigationDrawerItemTrailingText:
+                            text: "24"
+
+                    MDNavigationDrawerDivider:
+
+            MDIconButton:
+                icon: "dots-vertical"
+                pos_hint: {"top": 1, "left": 1}
+                on_release:nav_drawer.set_state("toggle")
+                
+            MDNavigationRail:
+                pos_hint: {"top": 1, "bottom": 1, "left":0 ,"right": 1}
+                type: "unselected"
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailFabButton:
+                        icon: "magnify"
+
+                    MDNavigationRailItemIcon:
+                        icon: 'account-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="حساب کاربری")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailItemIcon:
+                        icon: 'home-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="خانه")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailItemIcon:
+                        icon: 'shopping-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="فروشگاه")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
+
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailItemIcon:
+                        icon: 'face-agent'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="پشتیبانی")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
+
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailItemIcon:
+                        icon: 'truck-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="پیگیری سفارش")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
+
+
+                MDNavigationRailItem:
+
+                    MDNavigationRailItemIcon:
+                        icon: 'information-outline'
+                        font_size: "37dp"  # Set icon size here
+
+                    MDNavigationRailItemLabel:
+                        text: app.persian(txt="درباره ما")
+                        theme_font_name: "Custom"
+                        font_name: "nasalization"
+                        theme_font_size: "Custom"
+                        font_size: "9dp"
+
+
+
+
+<MobileView>
+    MainCard:
+        name : "MobileMainCard"
+        padding: "4dp"
+        size: "240dp", "100dp"
+    
+        MDRelativeLayout:
+            MDNavigationDrawer:
+                pos_hint:{"top":.90, "bottom": 1, "left": 1}
+                id: nav_drawer
+
+                MDNavigationDrawerMenu:
+                    MDNavigationDrawerItem:
+
+                        pos_hint: {"top":.8, "bottom": 0.2}
+
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "account"
+
+                        MDNavigationDrawerItemText:
+                            text: "Inbox"
+
+                        MDNavigationDrawerItemTrailingText:
+                            text: "24"
+
+                    MDNavigationDrawerDivider:
+
+            MDTopAppBar:
+                type: "small"
+                pos_hint:{"top":1, "bottom": 0.05, "left": .8, "right":1}
+
+                MDTopAppBarLeadingButtonContainer:
+        
+                    MDActionTopAppBarButton:
+                        icon: "dots-vertical"
+                        on_release:
+                            nav_drawer.set_state("toggle")
+        
+                MDTopAppBarTitle:
+                    pos_hint: {"center_x": .5}
+                    text: app.persian("فروشگاه خاص")
+                    theme_font_name: "Custom"
+                    font_name: "nasalization"
+        
+                MDTopAppBarTrailingButtonContainer:
+        
+                    MDActionTopAppBarButton:
+                        icon: "attachment"
+        
+                    MDActionTopAppBarButton:
+                        icon: "calendar"
 
 
 ResponsiveView:
