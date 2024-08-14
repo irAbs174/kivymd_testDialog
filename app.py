@@ -14,7 +14,7 @@ MDScreen:
         text: "سلام خوش آمدید"[::-1]
         halign: "center"
         font_style: "nasalization"
-        pos_hint: {"center_x": .5, "center_y": .58}
+        pos_hint: {"center_x": .5, "center_y": .62}
     
 
     MDButton:
@@ -32,7 +32,7 @@ MDScreen:
         MDButtonText:
             text : "شروع"[::-1]
             theme_font_name: "Custom"
-            font_name: "nasalization.otf"
+            font_name: "assets/fonts/Lalezar-Regular.ttf"
             theme_font_size: "Custom"
             font_size: "20dp"
 
@@ -46,7 +46,7 @@ class Example(MDApp):
 
         LabelBase.register(
             name="nasalization",
-            fn_regular="nasalization.otf",
+            fn_regular="assets/fonts/nasalization.otf",
         )
 
         self.theme_cls.font_styles["nasalization"] = {
@@ -66,7 +66,7 @@ class Example(MDApp):
                 halign="center",
                 theme_font_name= "Custom",
                 theme_font_size= "Custom",
-                font_name= "nasalization.otf",
+                font_name= "assets/fonts/Lalezar-Regular.ttf",
                 font_size= "40dp",
             ),
             MDDialogButtonContainer(
@@ -76,7 +76,7 @@ class Example(MDApp):
                         text= "ثبت نام"[::-1],
                         theme_font_name= "Custom",
                         theme_font_size= "Custom",
-                        font_name= "nasalization.otf",
+                        font_name= "assets/fonts/Lalezar-Regular.ttf",
                         font_size= "30dp",
                     ),
                     style="text",
@@ -86,7 +86,7 @@ class Example(MDApp):
                         text= "ورود"[::-1],
                         theme_font_name= "Custom",
                         theme_font_size= "Custom",
-                        font_name= "nasalization.otf",
+                        font_name= "assets/fonts/Lalezar-Regular.ttf",
                         font_size= "30dp",
                     ),
                     style="text",
