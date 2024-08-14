@@ -1,12 +1,14 @@
+from kivymd.uix.responsivelayout import MDResponsiveLayout
+from kivymd.uix.button import MDButton, MDButtonText
+from bidi.algorithm import get_display
+from kivymd.uix.screen import MDScreen
 from kivy.core.text import LabelBase
-from kivy.lang import Builder
+from arabic_reshaper import reshape
 from kivy.uix.widget import Widget
+from kivy.lang import Builder
 from kivy.metrics import sp
 from kivymd.app import MDApp
-from kivymd.uix.button import MDButton, MDButtonText
-from kivymd.uix.dialog import MDDialog, MDDialogHeadlineText, MDDialogButtonContainer
-from arabic_reshaper import reshape
-from bidi.algorithm import get_display
+
 
 class UniqueApp(MDApp):
     def build(self):
