@@ -1,0 +1,5 @@
+install python3 packages:
+"kivy[base]"
+https://github.com/kivymd/KivyMD
+python-bidi
+arabic-reshaper

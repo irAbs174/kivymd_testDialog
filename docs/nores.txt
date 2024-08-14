@@ -1,0 +1,9 @@
+1. fix arabic char presentions :
+# Create persian function in MDApp Class
+def persian(self, txt):
+    reshaped_text = reshape(txt)
+    bidi_text = get_display(reshaped_text)
+    return bidi_text
+
+#call function in commponent and enjoy
+--------------------------------------------
