@@ -5,16 +5,23 @@ from kivy.metrics import sp
 from kivymd.app import MDApp
 from kivymd.uix.button import MDButton, MDButtonText
 from kivymd.uix.dialog import MDDialog, MDDialogHeadlineText, MDDialogButtonContainer
+from arabic_reshaper import reshape
+from bidi.algorithm import get_display
 
 KV = '''
 MDScreen:
     md_bg_color: self.theme_cls.backgroundColor
 
     MDLabel:
-        text: "سلام خوش آمدید"[::-1]
+        # base_direction: 'rtl'
+        text: app.persian(txt = "سلام خوش آمدید")
         halign: "center"
         font_style: "nasalization"
         pos_hint: {"center_x": .5, "center_y": .62}
+        theme_font_name: "Custom"
+        font_name: "assets/fonts/fc.otf"
+        theme_font_size: "Custom"
+        font_size: "40dp"
     
 
     MDButton:
@@ -30,9 +37,9 @@ MDScreen:
             icon_color: "green"
 
         MDButtonText:
-            text : "شروع"[::-1]
+            text: app.persian(txt = "شروع")
             theme_font_name: "Custom"
-            font_name: "assets/fonts/Lalezar-Regular.ttf"
+            font_name: "assets/fonts/nasalization.otf"
             theme_font_size: "Custom"
             font_size: "20dp"
 
@@ -59,34 +66,41 @@ class Example(MDApp):
 
         return Builder.load_string(KV)
 
+    def persian(self, txt):
+        reshaped_text = reshape(txt)
+        bidi_text = get_display(reshaped_text)
+        return bidi_text
+
     def showDialog(self):
         MDDialog(
             MDDialogHeadlineText(
-                text="برای شروع وارد شده یا ثبت نام کنید"[::-1],
+                text=self.persian(txt="برای شروع وارد شده یا ثبت نام کنید"),
                 halign="center",
                 theme_font_name= "Custom",
                 theme_font_size= "Custom",
-                font_name= "assets/fonts/Lalezar-Regular.ttf",
+                font_name= "assets/fonts/nasalization.otf",
                 font_size= "40dp",
             ),
             MDDialogButtonContainer(
                 Widget(),
                 MDButton(
                     MDButtonText(
-                        text= "ثبت نام"[::-1],
+                        base_direction= 'rtl',
+                        text= self.persian("ثبت نام"),
                         theme_font_name= "Custom",
                         theme_font_size= "Custom",
-                        font_name= "assets/fonts/Lalezar-Regular.ttf",
+                        font_name= "assets/fonts/nasalization.otf",
                         font_size= "30dp",
                     ),
                     style="text",
                 ),
                 MDButton(
                     MDButtonText(
+                        base_direction= 'rtl',
                         text= "ورود"[::-1],
                         theme_font_name= "Custom",
                         theme_font_size= "Custom",
-                        font_name= "assets/fonts/Lalezar-Regular.ttf",
+                        font_name= "assets/fonts/nasalization.otf",
                         font_size= "30dp",
                     ),
                     style="text",
