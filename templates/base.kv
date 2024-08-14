@@ -1,32 +1,48 @@
-MDScreen:
-    md_bg_color: self.theme_cls.backgroundColor
+<ItemForList>
+    text: root.text
 
+    IconLeftSampleWidget:
+        icon: root.icon
+
+
+<Example@MDFloatLayout>
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: app.title
+            md_bg_color: app.theme_cls.primary_color
+            background_palette: 'Primary'
+            elevation: 4
+            left_action_items: [['menu', lambda x: x]]
+
+        MDScrollViewRefreshLayout:
+            id: refresh_layout
+            refresh_callback: app.refresh_callback
+            root_layout: root
+            spinner_color: "brown"
+            circle_color: "white"
+
+            MDGridLayout:
+                id: box
+                adaptive_height: True
+                cols: 1
+
+                
+<MobileView>
     MDLabel:
-        # base_direction: 'rtl'
-        text: app.persian(txt = "سلام خوش آمدید")
-        halign: "center"
-        font_style: "nasalization"
-        pos_hint: {"center_x": .5, "center_y": .62}
-        theme_font_name: "Custom"
-        font_name: "nasalization"
-        theme_font_size: "Custom"
-        font_size: "40dp"
-    
+        text: "Mobile"
 
-    MDButton:
-        style: "elevated"
-        pos_hint: {"center_x": .5, "center_y": .5}
-        size_hint: None, None
-        size: "98dp", "42dp"
 
-        MDButtonIcon:
-            icon: "plus"
-            theme_icon_color: "Custom"
-            icon_color: "green"
+<TabletView>
+    MDLabel:
+        text: "Table"
 
-        MDButtonText:
-            text: app.persian(txt = "شروع")
-            theme_font_name: "Custom"
-            font_name: "nasalization"
-            theme_font_size: "Custom"
-            font_size: "20dp"
+
+<DesktopView>
+    MDLabel:
+        text: "Desktop"
+
+
+ResponsiveView:
