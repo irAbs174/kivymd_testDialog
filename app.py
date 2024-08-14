@@ -8,7 +8,7 @@ from kivymd.uix.dialog import MDDialog, MDDialogHeadlineText, MDDialogButtonCont
 from arabic_reshaper import reshape
 from bidi.algorithm import get_display
 
-class Example(MDApp):
+class UniqueApp(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Dark"
 
@@ -32,4 +32,4 @@ class Example(MDApp):
         bidi_text = get_display(reshaped_text)
         return bidi_text
 
-Example().run()
+UniqueApp().run()
