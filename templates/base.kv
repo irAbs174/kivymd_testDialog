@@ -1,0 +1,32 @@
+MDScreen:
+    md_bg_color: self.theme_cls.backgroundColor
+
+    MDLabel:
+        # base_direction: 'rtl'
+        text: app.persian(txt = "سلام خوش آمدید")
+        halign: "center"
+        font_style: "nasalization"
+        pos_hint: {"center_x": .5, "center_y": .62}
+        theme_font_name: "Custom"
+        font_name: "nasalization"
+        theme_font_size: "Custom"
+        font_size: "40dp"
+    
+
+    MDButton:
+        style: "elevated"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        size_hint: None, None
+        size: "98dp", "42dp"
+
+        MDButtonIcon:
+            icon: "plus"
+            theme_icon_color: "Custom"
+            icon_color: "green"
+
+        MDButtonText:
+            text: app.persian(txt = "شروع")
+            theme_font_name: "Custom"
+            font_name: "nasalization"
+            theme_font_size: "Custom"
+            font_size: "20dp"
