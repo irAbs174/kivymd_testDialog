@@ -1,0 +1,20 @@
+[build-system]
+requires = ["'kivy[base]'", "arabic-reshaper==3.0.0", "grade", "setuptools>=42", "wheel", "nuitka", "toml", "KivyMD==2.0.0"]
+build-backend = "nuitka.distutils.Build"
+
+# Data files are to be handled by setuptools and not Nuitka
+[tool.setuptools.package-data]
+
+[tool.nuitka]
+# These are not recommended, but they make it obvious to have effect.
+
+# boolean option, e.g. if you cared for C compilation commands, leading
+# dashes are omitted
+show-scons = true
+
+# options with single values, e.g. enable a plugin of Nuitka
+enable-plugin = "pyside2"
+
+# options with several values, e.g. avoiding including modules, accepts
+# list argument.
+nofollow-import-to = ["*.tests", "*.distutils"]
